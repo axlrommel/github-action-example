@@ -14,8 +14,8 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: sleep for 2 s to give time to previous step to complete
-      run: sleep 2s
+    - name: sleep for 1 s to give time to previous step to complete
+      run: sleep 1s
       shell: bash
 
     - name: collect metrics
@@ -24,6 +24,8 @@ runs:
       with:
         github-token: ${{ inputs.github-token}}
         status: ${{ job.status}}
+        pr-type: ${{github.event.action }}
+        merged: ${{github.event.pull_request.merged}}
         branch-name: ${{ github.head_ref || github.ref_name }}
         metrics-api: ${{ inputs.metrics-api}}
 

@@ -14,8 +14,8 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: sleep for 1 s to give time to previous step to complete
-      run: sleep 1s
+    - name: sleep for 2 s to give time to previous step to complete
+      run: sleep 2s
       shell: bash
 
     - name: collect metrics

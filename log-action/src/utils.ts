@@ -55,15 +55,19 @@ export const getJobs = async (
     }
   );
 
-  return jobResponse.data.jobs.map((job) => ({
-    id: job.id,
-    html_url: job.html_url,
-    check_run_url: job.check_run_url,
-    name: job.name,
-    status: job.status,
-    steps: job.steps,
-    conclusion: job.conclusion,
-    started_at: job.started_at,
-    completed_at: job.completed_at,
-  }));
+  const jobIds = jobResponse.data.jobs.map(job => job.id).sort((a, b) => a > b ? 1 : -1);
+  return jobResponse.data.jobs.find((job) => {
+    if (job.id === jobIds[0])
+      return {
+        id: job.id,
+        html_url: job.html_url,
+        check_run_url: job.check_run_url,
+        name: job.name,
+        status: job.status,
+        steps: job.steps,
+        conclusion: job.conclusion,
+        started_at: job.started_at,
+        completed_at: job.completed_at,
+      }
+  });
 };

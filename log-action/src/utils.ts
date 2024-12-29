@@ -55,7 +55,7 @@ export const getJobs = async (
     }
   );
 
-  const jobIds = jobResponse.data.jobs.map(job => job.id).sort((a, b) => a > b ? 1 : -1);
+  const jobIds = jobResponse.data.jobs.map(job => job.id).sort((a, b) => a > b ? -1 : 1);
   return jobResponse.data.jobs.find((job) => {
     if (job.id === jobIds[0])
       return {

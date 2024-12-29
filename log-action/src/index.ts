@@ -11,7 +11,7 @@ async function run() {
     const metricsApi = core.getInput('metrics-api');
     const status = core.getInput('status');
     const prType = core.getInput('pr-type');
-    const merged = core.getInput('merged') ? true : false;
+    const merged = core.getInput('merged') === 'true' ? true : false;
     const repositoryName = context.payload.repository?.full_name?.substring(
       `${metricsArgs.owner}/`.length
     );

@@ -15,6 +15,12 @@ inputs:
     required: true
   branch-name:
     required: true
+  pr-type:
+    description: Pull Request Type
+    required: true
+  merged:
+    description: PR was merged
+    required: true
 outputs:
   METRICS_OUTPUT:
     description: job output in json format

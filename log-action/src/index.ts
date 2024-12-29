@@ -10,7 +10,7 @@ async function run() {
     const branchName = core.getInput('branch-name');
     const metricsApi = core.getInput('metrics-api');
     const status = core.getInput('status');
-    const prType = core.getInput('pr-type');
+    const pullRequestType = core.getInput('pr-type');
     const merged = core.getInput('merged') === 'true' ? true : false;
     const repositoryName = context.payload.repository?.full_name?.substring(
       `${metricsArgs.owner}/`.length
@@ -22,7 +22,7 @@ async function run() {
       jobDetails: jobs,
       status,
       branchName,
-      prType,
+      pullRequestType,
       merged,
       currentJob: jobName,
       ...metricsArgs,

@@ -11,11 +11,11 @@ async function run() {
     const metricsApi = core.getInput('metrics-api');
     const status = core.getInput('status');
     const repositoryName = context.payload.repository?.full_name?.substring(
-      'axlrommel/'.length
+      `${metricsArgs.owner}/`.length
     );
     const runId = context.runId;
     const jobName = context.job;
-    const jobs = await getJobs(token, repositoryName, runId);
+    const jobs = await getJobs(token, repositoryName, metricsArgs.owner, runId);
     const metricsObj = {
       jobDetails: jobs,
       status,

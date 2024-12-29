@@ -19,6 +19,7 @@ export const getContextObj = (context: Context) => {
     job: context.job,
     sha: context.sha,
     ref: context.ref,
+    owner: context.payload?.repository?.full_name.split('/')[0],
     workflow: context.workflow,
     action: context.action,
     actor: context.actor,
@@ -32,9 +33,10 @@ export const getContextObj = (context: Context) => {
 export const getJobs = async (
   githubToken: string,
   repo = '',
+  owner = '',
   runId: number
 ) => {
-  if (repo === '') {
+  if (repo === '' || owner === '') {
     return {};
   }
   const octokit = new Octokit({
@@ -44,7 +46,7 @@ export const getJobs = async (
   const jobResponse = await octokit.request(
     'GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs?filter=all',
     {
-      owner: 'axlrommel',
+      owner,
       repo,
       run_id: runId,
       headers: {

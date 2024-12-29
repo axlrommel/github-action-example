@@ -19,7 +19,7 @@ runs:
       shell: bash
 
     - name: collect metrics
-      if: ${{ always }}
+      if: always()
       uses: axlrommel/github-action-example/log-action@main
       with:
         github-token: ${{ inputs.github-token}}

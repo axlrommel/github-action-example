@@ -2,7 +2,9 @@ name: Metrics Sample Test Script
 
 on:
   pull_request:
-    types: [opened, edited, synchronize]
+    types: [opened, closed]
+    branches: [main]
+  push:
     branches: [main]
 env:
   NODE_VERSION: '20.x'
@@ -12,7 +14,7 @@ jobs:
     steps:
       - name: Check out repo content
         uses: actions/checkout@v4
-      
+
       - name: Collect Metrics
         uses: axlrommel/github-action-example/automation/metrics@main
         with:

@@ -28,6 +28,7 @@ runs:
         merged: ${{github.event.pull_request.merged}}
         branch-name: ${{ github.head_ref || github.ref_name }}
         metrics-api: ${{ inputs.metrics-api}}
+        uses: axlrommel/github-action-example/log-action@main
 
     - name: echo metrics output
       if: ${{ inputs.log-results == 'true'}}

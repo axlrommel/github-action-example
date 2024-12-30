@@ -21,6 +21,9 @@ inputs:
   merged:
     description: PR was merged
     required: true
+  uses:
+    description: workflow used
+    required: true
 outputs:
   METRICS_OUTPUT:
     description: job output in json format
